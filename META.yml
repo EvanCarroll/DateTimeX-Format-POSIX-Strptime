@@ -1,5 +1,5 @@
 ---
-abstract: ~
+abstract: 'OO interface into the POSIX library''s strptime'
 author:
   - 'Evan Carroll <me@evancarroll.com>'
 build_requires:
@@ -15,6 +15,13 @@ no_index:
   directory:
     - inc
     - t
+requires:
+  DateTime::Format::CLDR: 0
+  DateTimeX::Format: 0
+  DateTimeX::Format::CustomPattern: 0
+  Moose: 0
+  POSIX::strptime: 0
+  perl: 5.10.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 00.01_01
+version: 00.01_02

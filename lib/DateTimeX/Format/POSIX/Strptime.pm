@@ -2,10 +2,11 @@ package DateTimeX::Format::POSIX::Strptime;
 use strict;
 use warnings;
 
-our $VERSION = '00.01_01';
+our $VERSION = '00.01_02';
 
 use feature ':5.10';
 use mro 'c3';
+use 5.010;
 
 use Moose;
 use Carp;
@@ -84,13 +85,13 @@ __END__
 
 =head1 NAME
 
-DateTime::Format::POSIX::Strptime - OO interface into the POSIX library's strptime
+DateTimeX::Format::POSIX::Strptime - OO interface into the POSIX library's strptime
 
 =head1 SYNOPSIS
 
-	use DateTime::Format::Strptime;
+	use DateTimeX::Format::Strptime;
 
-	my $dtf = DateTime::Format::Strptime({ locale => 'en_US', timezone => 'America/Chicago', pattern => $pattern });
+	my $dtf = DateTimeX::Format::Strptime({ locale => 'en_US', timezone => 'America/Chicago', pattern => $pattern });
 
 	$dtf->parse_datetime( "time" );
 
@@ -148,10 +149,6 @@ L<http://cpanratings.perl.org/d/DateTimeX-Format-POSIX-Strptime>
 L<http://search.cpan.org/dist/DateTimeX-Format-POSIX-Strptime/>
 
 =back
-
-
-=head1 ACKNOWLEDGEMENTS
-
 
 =head1 COPYRIGHT & LICENSE
 

@@ -7,6 +7,12 @@ license  'perl';
 
 build_requires 'Test::More';
 
+requires 'Moose';
+requires 'POSIX::strptime';
+requires 'DateTimeX::Format';
+requires 'DateTimeX::Format::CustomPattern';
+requires 'DateTime::Format::CLDR';
+
 auto_install;
 
 WriteAll;

@@ -1,5 +1,9 @@
 Revision history for DateTimeX-Format-POSIX-Strptime
 
-0.01    Date/time
-        First version, released on an unsuspecting world.
+00.01_02    Feb 19, 2009
+            Fixed the shitty make file
+            Fixed the POD
+
+00.01_01    Feb 18, 2009
+            First version!!
 
