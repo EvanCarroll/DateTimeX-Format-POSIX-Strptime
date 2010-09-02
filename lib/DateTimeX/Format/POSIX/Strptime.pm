@@ -2,7 +2,7 @@ package DateTimeX::Format::POSIX::Strptime;
 use strict;
 use warnings;
 
-our $VERSION = '00.01_02';
+our $VERSION = '00.01_03';
 
 use feature ':5.10';
 use mro 'c3';
@@ -12,16 +12,15 @@ use Moose;
 use Carp;
 
 with 'DateTimeX::Format::CustomPattern';
-with 'DateTimeX::Format';
 
 use POSIX::strptime;
 use POSIX qw();
 
 sub parse_datetime {
 	my ( $self, $time, $args ) = @_;
-	my $pattern  = $args->{pattern};
-	my $timezone = $args->{timezone};
-	my $locale   = $args->{locale};
+	my $pattern   = $args->{pattern};
+	my $time_zone = $args->{time_zone};
+	my $locale    = $args->{locale};
 	
 	if ( $pattern =~ m/%([cxX])/ ) {
 		my $cldr;
@@ -39,7 +38,7 @@ sub parse_datetime {
 		my $dt = DateTime::Format::CLDR->new(
 			pattern     => $cldr
 			, locale    => $locale
-			, time_zone => $timezone
+			, time_zone => $time_zone
 			, on_error  => 'croak'
 		)->parse_datetime( $time );
 	}
@@ -52,7 +51,7 @@ sub parse_datetime {
 	$time[5] += 1900 if defined $time[5];
 
 	$self->new_datetime({
-		timezone  => $timezone
+		time_zone => $time_zone
 		, locale  => $locale
 		, second  => $time[0]
 		, minute  => $time[1]
@@ -91,7 +90,7 @@ DateTimeX::Format::POSIX::Strptime - OO interface into the POSIX library's strpt
 
 	use DateTimeX::Format::Strptime;
 
-	my $dtf = DateTimeX::Format::Strptime({ locale => 'en_US', timezone => 'America/Chicago', pattern => $pattern });
+	my $dtf = DateTimeX::Format::Strptime({ locale => 'en_US', time_zone => 'America/Chicago', pattern => $pattern });
 
 	$dtf->parse_datetime( "time" );
 
@@ -106,7 +105,7 @@ DateTimeX::Format::POSIX::Strptime - OO interface into the POSIX library's strpt
 
 This module does *not* reimpliment strptime(3) into perl. It binds into the POSIX library using L<POSIX::strptime> and uses Moose for the rest. This is massively simplier and less error-prone than L<DateTime::Format::Strptime> which is an attempt at a total perl implimentation of POSIX strptime(3).
 
-This module differs from L<DateTime::Format::Strptime> in a few ways: (a) it deosn't have complex PrintError/RaiseError code, it simply dies if it has reason to believe there was an error; (b) it doesn't have complex diagnostic code, and it doesn't really need it either: the work is in the POSIX library not perl; (c) it has all of the advantages of the L<DateTimeX::Format>, and L<DateTimeX::Format::CustomPattern> roles.
+This module differs from L<DateTime::Format::Strptime> in a few ways: (a) it doesn't have complex PrintError/RaiseError code, it simply dies if it has reason to believe there was an error; (b) it doesn't have complex diagnostic code, and it doesn't really need it either: the work is in the POSIX library not perl; (c) it has all of the advantages of the L<DateTimeX::Format>, and L<DateTimeX::Format::CustomPattern> roles.
 
 =head1 CONSTRUCTOR AND METHODS
 
@@ -126,7 +125,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc DateTimeX::Format::POSIX::Strptime
+ perldoc DateTimeX::Format::POSIX::Strptime
 
 You can also look for information at:
 

@@ -13,6 +13,9 @@ requires 'DateTimeX::Format';
 requires 'DateTimeX::Format::CustomPattern';
 requires 'DateTime::Format::CLDR';
 
+repository 'git://github.com/EvanCarroll/DateTimeX-Format-POSIX-Strptime.git';
+homepage   'http://www.evancarroll.com'
+
 auto_install;
 
 WriteAll;
