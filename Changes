@@ -1,5 +1,9 @@
 Revision history for DateTimeX-Format-POSIX-Strptime
 
+00.01_03    Sept. 02, 2010
+						Aparently, I never released 00.01_03 to CPAN or github. A few minor
+						bug/doc fixes.
+
 00.01_02    Feb 19, 2009
             Fixed the shitty make file
             Fixed the POD
